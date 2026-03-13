@@ -1,6 +1,6 @@
 # Bingo grego – Xerador de cartóns e bombo interactivo
 
-Autor: Alejandro Morón  
+Autor: Alejandro Morón Bandín  
 Ano: 2026  
 
 ## Descrición
