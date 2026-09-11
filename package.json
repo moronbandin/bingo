@@ -1,0 +1,19 @@
+{
+  "name": "bingo-grego",
+  "version": "2.0.0",
+  "private": true,
+  "description": "App estatica para crear cartons imprimibeis e xogar ao bingo co alfabeto grego.",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 5173",
+    "build": "node --check src/main.js && node --check src/cards.js && node --check src/caller.js && node --check src/alphabet.js && node --check src/random.js",
+    "preview": "python3 -m http.server 4173"
+  },
+  "keywords": [
+    "bingo",
+    "grego",
+    "alfabeto",
+    "educacion"
+  ],
+  "license": "MIT"
+}

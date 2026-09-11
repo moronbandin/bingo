@@ -1,0 +1,110 @@
+@page {
+  size: A4 portrait;
+  margin: 10mm;
+}
+
+@media print {
+  :root {
+    --ink: #000;
+  }
+
+  body {
+    background: white;
+  }
+
+  .sidebar,
+  .workspace-header,
+  .control-panel,
+  .panel-heading,
+  #caller-view {
+    display: none !important;
+  }
+
+  .app-shell,
+  .workspace,
+  .view,
+  .builder-layout,
+  .preview-panel,
+  .cards-preview {
+    display: block !important;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  #cards-view {
+    display: block !important;
+  }
+
+  .cards-preview {
+    display: block !important;
+  }
+
+  .print-sheet {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, max-content);
+    gap: 7mm 6mm;
+    width: 190mm;
+    min-height: 277mm;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .print-sheet:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .bingo-card {
+    align-self: stretch;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .bingo-card header {
+    padding: 1.8mm 2.4mm;
+    border-bottom-width: 0.45mm;
+    font-size: 7.4pt;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .bingo-card header strong {
+    font-size: 9pt;
+  }
+
+  .card-grid {
+    border-top: 0;
+    border-left-width: 0.3mm;
+  }
+
+  .card-cell {
+    min-height: 12mm;
+    padding: 0;
+    border-right-width: 0.3mm;
+    border-bottom-width: 0.3mm;
+  }
+
+  .card-cell strong {
+    font-size: 24pt;
+  }
+
+  .card-cell small {
+    font-size: 6pt;
+  }
+
+  .hide-letter-names .card-cell small {
+    display: none !important;
+  }
+}

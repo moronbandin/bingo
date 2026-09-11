@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="gl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Bingo grego para crear cartóns imprimíbeis e xogar cun bombo interactivo co alfabeto grego."
+    />
+    <title>bingo</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+    <link rel="stylesheet" href="./src/print.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navegacion principal">
+        <div class="brand">
+          <div>
+            <h1>bingo</h1>
+            <p>grego</p>
+          </div>
+        </div>
+
+        <nav class="view-tabs" aria-label="Vistas">
+          <button class="tab-button is-active" type="button" data-view-button="caller">
+            Bombo
+          </button>
+          <button class="tab-button" type="button" data-view-button="cards">
+            Cartóns
+          </button>
+        </nav>
+
+        <section class="sidebar-panel">
+          <h2>Serie actual</h2>
+          <dl class="stat-list">
+            <div>
+              <dt>Letras</dt>
+              <dd data-stat="letterPool">48</dd>
+            </div>
+            <div>
+              <dt>Cartóns</dt>
+              <dd data-stat="cardCount">10</dd>
+            </div>
+            <div>
+              <dt>Folios</dt>
+              <dd data-stat="pageCount">1</dd>
+            </div>
+            <div>
+              <dt>Semente</dt>
+              <dd data-stat="seed">—</dd>
+            </div>
+          </dl>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <section class="view is-active" id="caller-view" data-view="caller" aria-labelledby="caller-title">
+          <header class="workspace-header">
+            <div>
+              <h2 id="caller-title">Bombo de letras gregas</h2>
+            </div>
+            <div class="header-actions">
+              <button class="icon-button" type="button" data-action="fullscreen" title="Pantalla completa" aria-label="Pantalla completa">
+                ⛶
+              </button>
+              <button class="secondary-button" type="button" data-action="reset-caller">Reiniciar</button>
+              <button class="primary-button" type="button" data-action="draw">Sacar letra</button>
+            </div>
+          </header>
+
+          <div class="caller-layout">
+            <section class="draw-stage" aria-live="polite">
+              <div class="draw-meta">
+                <span data-draw-label>Preme sacar letra</span>
+                <strong><span data-remaining-count>48</span> restantes</strong>
+              </div>
+              <div class="draw-letter" data-last-letter>Α</div>
+              <div class="draw-name" data-last-name>Maiúsculas e minúsculas mesturadas</div>
+              <div class="draw-progress" aria-hidden="true">
+                <span data-progress-bar></span>
+              </div>
+            </section>
+
+            <section class="history-panel" aria-labelledby="history-title">
+              <div class="panel-heading">
+                <h3 id="history-title">Historial</h3>
+                <span data-drawn-count>0 saídas</span>
+              </div>
+              <ol class="history-list" data-history-list></ol>
+            </section>
+          </div>
+
+          <section class="alphabet-board" aria-label="Letras extraídas">
+            <div class="alphabet-section">
+              <div class="panel-heading">
+                <h3>Maiúsculas</h3>
+                <span>Α-Ω</span>
+              </div>
+              <div class="letter-grid" data-board="upper"></div>
+            </div>
+            <div class="alphabet-section">
+              <div class="panel-heading">
+                <h3>Minúsculas</h3>
+                <span>α-ω</span>
+              </div>
+              <div class="letter-grid" data-board="lower"></div>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" id="cards-view" data-view="cards" aria-labelledby="cards-title">
+          <header class="workspace-header">
+            <div>
+              <h2 id="cards-title">Cartóns A4</h2>
+            </div>
+            <div class="header-actions">
+              <button class="secondary-button" type="button" data-action="random-seed">Nova semente</button>
+              <button class="primary-button" type="button" data-action="print">Imprimir / PDF</button>
+            </div>
+          </header>
+
+          <div class="builder-layout">
+            <form class="control-panel" aria-label="Configuracion dos cartons">
+              <label>
+                <span>Cartóns totais</span>
+                <input type="number" min="10" max="300" step="10" value="10" data-setting="cardCount" />
+              </label>
+              <p class="control-note">Xéranse folios A4 con 10 cartóns clásicos 3x9 por páxina.</p>
+              <label>
+                <span>Semente</span>
+                <input type="text" value="AGORA-2026" maxlength="24" data-setting="seed" />
+              </label>
+              <label class="toggle-row important-toggle">
+                <input type="checkbox" data-setting="showNames" />
+                <span>Mostrar nomes das letras</span>
+              </label>
+              <label class="toggle-row">
+                <input type="checkbox" checked data-setting="cardNumbers" />
+                <span>Numerar cartóns</span>
+              </label>
+            </form>
+
+            <section class="preview-panel" aria-label="Vista previa dos cartons">
+              <div class="panel-heading">
+                <h3>Vista previa</h3>
+                <span data-preview-summary>10 cartóns · 1 folio A4</span>
+              </div>
+              <div class="cards-preview" data-cards-preview></div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
